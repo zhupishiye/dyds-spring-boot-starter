@@ -28,7 +28,18 @@ dyds.def.password=password
 以上操作完成，spring容器中会存在名为dataSource的动态数据源bean
 ### 两种方式切换数据源
 #### 1.手动切换
+
+切换到默认数据源
+
+com.exfu.tool.dyds.dynamicDb.DataSourceContextHolder#setDefault
+
+切换到指定数据源
+
 com.exfu.tool.dyds.dynamicDb.DataSourceContextHolder#set
+
+切换到指定数据源，如失败，切换到默认数据源
+
+com.exfu.tool.dyds.dynamicDb.DataSourceContextHolder#setOrDefault
 
 #### 2.注解切换
     @DateSource(db = "12")
