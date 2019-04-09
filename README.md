@@ -47,7 +47,7 @@ com.exfu.tool.dyds.dynamicDb.DataSourceContextHolder#setOrDefault
         return null;
     }
     
-    @DateSource(target = "#{s}",dbFunction = "com.test.GetDbFunc#get")
+    @DateSource(target = "#{s}",dbFunction = "com.exfu.tool.dyds.tools.GetProxy#get")
     public Object serviceMethod2(String s) {
         return null;
     }
