@@ -5,7 +5,6 @@ spring-starter 注解式动态数据源新加载/切换
 
 不强制使用多数据源
 
-使用：
 ## 1.引入依赖
         <dependency>
             <groupId>com.exfu.tool</groupId>
@@ -27,10 +26,21 @@ dyds.def.password=password
 
 ## 3.自定义配置
 以上操作完成，spring容器中会存在名为dataSource的动态数据源bean
-
-两种方式切换数据源
-### 1.手动切换
+### 两种方式切换数据源
+#### 1.手动切换
 com.exfu.tool.dyds.dynamicDb.DataSourceContextHolder#set
 
-### 2.注解切换
+#### 2.注解切换
+    @DateSource(db = "12")
+    public Object serviceMethod1() {
+        return null;
+    }
+    
+    @DateSource(target = "#{s}",dbFunction = "com.test.GetDbFunc#get")
+    public Object serviceMethod2(String s) {
+        return null;
+    }
+    dbFunction为用户自定义 根据方法参数对应查找数据源标识方法 ps:GetDbFunc类需在spriong容器内
+### 动态加载新数据源
+实现com.exfu.tool.dyds.inter.getDb接口，并置于容器内
 
